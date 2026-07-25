@@ -1,18 +1,18 @@
 # Matthias Schönebeck
 
-**Blockchain and DeFi infrastructure engineer working on privacy, trading, lending, and applied cryptography in C++ and Rust.**
+**Blockchain and DeFi infrastructure engineer building privacy, trading, lending, and applied cryptography systems in C++ and Rust.**
 
-I build protocol-level systems where deterministic execution, accounting correctness, economic invariants, custody boundaries, and cryptographic soundness matter.
+I work on protocol-level systems where deterministic execution, accounting correctness, economic invariants, custody boundaries, and cryptographic soundness matter.
 
-## Flagship Systems
+## Selected Work
 
-### ZEOS Caterpillar — Shielded Protocol
+### ZEOS Caterpillar
 
 [ZEOS Caterpillar](https://github.com/mschoenebeck/zeos-caterpillar) brings Sapling-style shielded transactions to programmable Antelope blockchains.
 
-It extends the note model to fungible tokens issued by independent contracts, indivisible NFTs, and private smart-contract authorization through auth tokens. The Rust engine handles keys, notes, encryption, wallet state, transaction construction, and Groth16 proof generation; its on-chain counterpart verifies proofs and maintains the authoritative commitment and nullifier state.
+It extends the shielded-note model to fungible tokens issued by independent contracts, indivisible NFTs, and private smart-contract authorization through auth tokens. The Rust engine handles keys, notes, encryption, wallet state, transaction construction, and Groth16 proof generation; its on-chain counterpart verifies proofs and maintains the authoritative commitment and nullifier state.
 
-CLOAK is a live implementation of the protocol.
+CLOAK is an implementation of the protocol.
 
 - [ZEOS Caterpillar](https://github.com/mschoenebeck/zeos-caterpillar)
 - [ZEOS Caterpillar MPC](https://github.com/mschoenebeck/zeos-caterpillar-mpc)
@@ -21,7 +21,7 @@ CLOAK is a live implementation of the protocol.
 
 ### Hybrid Exchange Engine
 
-A deterministic C++ trading engine that combines three native liquidity models inside one market:
+A live decentralized exchange powered by a deterministic C++ engine that combines three native liquidity models inside one market:
 
 - a central limit order book;
 - a constant-product AMM;
@@ -29,37 +29,42 @@ A deterministic C++ trading engine that combines three native liquidity models i
 
 Execution moves through price space segment by segment and routes against the best available native liquidity without flattening every model into synthetic order-book rows.
 
-- [Architecture and protocol documentation](https://github.com/mschoenebeck/hybrid-exchange-engine)
+- [Architecture and mathematics](https://github.com/mschoenebeck/hybrid-exchange-engine)
 - [Open the live DEX](https://app.cloak.today/advanced)
 
 ### CLOAK Lending
 
-A lending protocol for Antelope built around deterministic fixed-point accounting, oracle-driven risk pricing, staged and resumable processing, insurance, savings, bailouts, and protocol backstops.
+A privacy-enabled lending protocol for Antelope built around deterministic fixed-point accounting, oracle-driven risk pricing, staged and resumable processing, insurance, savings, bailouts, and protocol backstops.
 
 The design is inspired by the Vigor economic model but substantially reworked for CLOAK's asset model, privacy integrations, and implementation requirements. The protocol is currently being tested ahead of launch.
 
-- [Architecture and protocol documentation](https://github.com/mschoenebeck/cloak-lending)
+- [Technical and economic documentation](https://github.com/mschoenebeck/cloaklending)
 - [Open the lending application](https://app.cloak.today/lending/dashboard)
 
-## Open-Source Foundations
+## Technical Foundations
 
-### BLS12-381 and Antelope Integration
+### BLS12-381
 
-A high-performance BLS12-381 implementation in C++ and x86 assembly, together with the smart-contract integration layer used for Groth16 verification on Antelope.
+A high-performance implementation of BLS12-381 elliptic-curve and pairing primitives in C++ and x86 assembly.
 
-The work spans finite-field arithmetic, elliptic-curve groups, pairings, serialization, hash-to-curve support, CDT-facing types, and native Leap host functions.
+The work covers finite-field arithmetic, elliptic-curve groups, pairings, serialization, hash-to-curve support, and the native cryptographic operations contributed to Antelope Leap.
 
 - [BLS12-381](https://github.com/mschoenebeck/bls12-381)
-- [BLS12-381 CDT](https://github.com/mschoenebeck/bls12-381-cdt)
 - [Contribution to Antelope Leap](https://github.com/AntelopeIO/leap/pull/1071)
+
+### BLS12-381 CDT
+
+Header-only BLS12-381 and Groth16 utilities for Antelope smart contracts, backed by native Leap/CDT cryptographic host functions.
+
+- [BLS12-381 CDT](https://github.com/mschoenebeck/bls12-381-cdt)
 
 ### `fp128`
 
-A deterministic signed 128-bit decimal fixed-point type for financial and numerical code in C++.
+A deterministic signed 128-bit decimal fixed-point type for pricing, fees, curve mathematics, accounting, risk calculations, and other financial code where floating-point behavior is not acceptable.
 
-It is designed for pricing, fees, curve mathematics, accounting, risk calculations, and other systems where floating-point behavior is not acceptable.
+The implementation is not currently open source. The public repository documents its design, arithmetic semantics, API, and validation approach.
 
-- [`fp128` repository](https://github.com/mschoenebeck/fp128)
+- [`fp128` technical documentation](https://github.com/mschoenebeck/fp128)
 
 ## Technical Focus
 
